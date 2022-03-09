@@ -8,24 +8,32 @@ public class FirstPersonCharacter : MonoBehaviour
     CharacterMovement characterMovement;
     Camera _camera;
     float cameraPitch;
-
+    
     void Start()
     {
         characterMovement = GetComponent<CharacterMovement>();
         _camera = GetComponentInChildren<Camera>();
         cameraPitch = _camera.transform.localEulerAngles.x;
         HideCursor();
+        
     }
 
     void Update()
     {
         characterMovement.SetMovementDirection(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         CameraRotation();
+        if (Input.GetAxis("Jump") == 1)
+        {
+            Debug.Log("Jump");
+            characterMovement.Jump();
+
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Shot();
         }
     }
+    
 
     void Shot()
     {

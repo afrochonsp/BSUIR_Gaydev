@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : Character
 {
     [SerializeField] float speed = 100;
     float gravity = 9.8f;

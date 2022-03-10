@@ -6,9 +6,10 @@ public class AI_Perception : MonoBehaviour
 {
     [SerializeField] float sightRadius = 50;
     [SerializeField] float sightConeAngle = 90;
+    NPC npc;
     void Start()
     {
-
+        npc = GetComponent<NPC>();
     }
 
     // Update is called once per frame
@@ -25,17 +26,15 @@ public class AI_Perception : MonoBehaviour
                     float angle = Vector3.SignedAngle((hit.transform.position - transform.position).normalized, transform.forward, Vector3.up);
                     if ((angle > 0 && angle < sightConeAngle / 2) || (angle < 0 && angle > -sightConeAngle / 2))
                     {
-                        print(angle + 180);
+                        //print(angle + 180);
+                        npc.OnPerceptionUpdate(hit.transform.GetComponent<Character>(), true);
                     }
                 }
             }
+            if (hits.Length == 0)
+            {
+                npc.OnPerceptionUpdate(null, false);
+            }
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, sightRadius);
     }
 }

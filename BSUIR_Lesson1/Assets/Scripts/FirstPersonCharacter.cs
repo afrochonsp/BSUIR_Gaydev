@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class FirstPersonCharacter : MonoBehaviour
+public class FirstPersonCharacter : Character
 {
     [SerializeField] float mouseSensivity = 2;
     [SerializeField] float cameraPitchRange = 180;

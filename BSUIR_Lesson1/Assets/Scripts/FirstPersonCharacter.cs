@@ -28,7 +28,7 @@ public class FirstPersonCharacter : Character
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Shot();
+            GetComponent<Gun>().Shot();
         }
     }
     
@@ -80,6 +80,11 @@ public class FirstPersonCharacter : Character
         float posY = _camera.pixelHeight / 2 - size / 2;
         GUI.contentColor = Color.black;
         GUI.Label(new Rect(posX, posY, size, size), "*");
+    }
+
+    public override void TakeDamage(float damage)
+    {
+
     }
 }
 

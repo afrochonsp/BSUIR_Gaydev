@@ -8,17 +8,27 @@ public class AI_Perception : MonoBehaviour
     [SerializeField] float sightConeAngle = 90;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, sightRadius, transform.forward, out hit, 0))
+        RaycastHit[] hits;
+        hits = Physics.SphereCastAll(transform.position, sightRadius, transform.forward);
+        if (hits.Length > 0)
         {
-            print(hit.transform);
-            // = hit.distance;
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.transform.GetComponent<FirstPersonCharacter>())
+                {
+                    float angle = Vector3.SignedAngle((hit.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+                    if ((angle > 0 && angle < sightConeAngle / 2) || (angle < 0 && angle > -sightConeAngle / 2))
+                    {
+                        print(angle + 180);
+                    }
+                }
+            }
         }
     }
 

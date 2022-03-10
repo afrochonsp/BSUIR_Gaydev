@@ -24,9 +24,7 @@ public class FirstPersonCharacter : MonoBehaviour
         CameraRotation();
         if (Input.GetAxis("Jump") == 1)
         {
-            Debug.Log("Jump");
             characterMovement.Jump();
-
         }
         if (Input.GetMouseButtonDown(0))
         {

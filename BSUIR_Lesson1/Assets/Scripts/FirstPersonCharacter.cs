@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class FirstPersonCharacter : MonoBehaviour
+public class FirstPersonCharacter : Character
 {
     [SerializeField] float mouseSensivity = 2;
     [SerializeField] float cameraPitchRange = 180;
@@ -24,13 +24,11 @@ public class FirstPersonCharacter : MonoBehaviour
         CameraRotation();
         if (Input.GetAxis("Jump") == 1)
         {
-            Debug.Log("Jump");
             characterMovement.Jump();
-
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Shot();
+            GetComponent<Gun>().Shot();
         }
     }
     
@@ -82,6 +80,11 @@ public class FirstPersonCharacter : MonoBehaviour
         float posY = _camera.pixelHeight / 2 - size / 2;
         GUI.contentColor = Color.black;
         GUI.Label(new Rect(posX, posY, size, size), "*");
+    }
+
+    public override void TakeDamage(float damage)
+    {
+
     }
 }
 

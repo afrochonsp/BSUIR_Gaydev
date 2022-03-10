@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacterController))]
-public class CharacterMovement : Character
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float speed = 50;
     [SerializeField] float jumpSpeed = 7;
@@ -43,6 +44,8 @@ public class CharacterMovement : Character
         }
         movement = new Vector3(direction.x * speed, movement.y, direction.y * speed);
         movement = transform.TransformDirection(movement);
+        if (GetComponent<NavMeshAgent>())
+            return;
         characterController.Move(movement * Time.deltaTime);
     }
 }

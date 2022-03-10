@@ -6,12 +6,11 @@ using UnityEngine;
 public class AI_StateManager : MonoBehaviour
 {
     NPC npc;
-    AI_State currentState;
-    AI_StateIdle stateIdle = new AI_StateIdle();
-    AI_StateMove stateMove = new AI_StateMove();
-    AI_StateRotate stateRotate = new AI_StateRotate();
+    public AI_State currentState;
+    public AI_StateIdle stateIdle = new AI_StateIdle();
+    public AI_StateMove stateMove = new AI_StateMove();
+    public AI_StateRotate stateRotate = new AI_StateRotate();
 
-    // Start is called before the first frame update
     void Start()
     {
         npc = GetComponent<NPC>();
@@ -19,7 +18,6 @@ public class AI_StateManager : MonoBehaviour
         currentState.EnterState(this, npc);
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentState.UpdateState(this, npc);

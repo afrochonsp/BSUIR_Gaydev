@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-    public Animation anim;
+    public Animator anim;
     void Start()
     {
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        anim.Play("idle");
-    }
+        anim.Play("Shoot");
+    } 
 }

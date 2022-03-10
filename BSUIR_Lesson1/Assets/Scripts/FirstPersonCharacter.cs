@@ -24,7 +24,7 @@ public class FirstPersonCharacter : Character
         CameraRotation();
         if (Input.GetAxis("Jump") == 1)
         {
-            characterMovement.Jump();
+           // characterMovement.Jump();
         }
         if (Input.GetMouseButtonDown(0))
         {

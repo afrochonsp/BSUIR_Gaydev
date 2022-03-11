@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3043356138339134598}
   - component: {fileID: 3043356138339134648}
   - component: {fileID: 3043356138339134649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3043356138701080555}
   - component: {fileID: 2263796827253994533}
   - component: {fileID: 7619332993270414417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3043356138701080565}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -9,15 +9,21 @@ public class NPC : Character
 {
     public Character target { get; private set; }
     AI_Perception perception;
+    public Animator animator { get; private set; }
+    NavMeshAgent navMeshAgent;
     void Start()
     {
         perception = GetComponent<AI_Perception>();
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(animator)
+        {
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+        }
     }
 
     public void OnPerceptionUpdate(Character target)
@@ -28,7 +34,7 @@ public class NPC : Character
     public override void TakeDamage(float damage)
     {
         HP -= damage;
-        if (HP < 0)
+        if (HP <= 0)
         {
             Destroy(gameObject);
         }

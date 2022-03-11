@@ -26,7 +26,7 @@ public class FirstPersonCharacter : Character
         {
             characterMovement.Jump();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetAxis("Fire1") == 1)
         {
             GetComponent<Gun>().Shot();
         }

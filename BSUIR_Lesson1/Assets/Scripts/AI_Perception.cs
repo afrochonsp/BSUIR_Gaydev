@@ -27,7 +27,7 @@ public class AI_Perception : MonoBehaviour
         hits = Physics.SphereCastAll(transform.position, sightRadius, transform.forward);
         foreach (RaycastHit hit in hits)
         {
-            if (hit.transform.GetComponent<FirstPersonCharacter>())
+            if (hit.transform.GetComponent<FirstPersonCharacter>() && Physics.Linecast(transform.position, hit.transform.position))
             {
                 float angle = Vector3.SignedAngle((hit.transform.position - transform.position).normalized, transform.forward, Vector3.up);
                 if (Mathf.Abs(angle) < SightConeAngle / 2)

@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class AI_StateMove : AI_State
 {
     NavMeshAgent navMeshAgent;
-    float distance = 10;
+    float distance = 30;
     public override void EnterState(AI_StateManager manager, NPC npc)
     {
         navMeshAgent = npc.GetComponent<NavMeshAgent>();
+        navMeshAgent.isStopped = false;
         Vector3 pos = RandomNavSphere(npc.transform.position, distance);
         navMeshAgent.SetDestination(pos);
     }
@@ -25,13 +26,14 @@ public class AI_StateMove : AI_State
 
     public override void UpdateState(AI_StateManager manager, NPC npc)
     {
-        if (!navMeshAgent.hasPath)
+        if (npc.target)
         {
-            manager.ChangeState(manager.stateIdle);
+            navMeshAgent.isStopped = true;
+            manager.ChangeState(manager.stateRotate);
         }
         if (!navMeshAgent.hasPath)
         {
-            manager.ChangeState(manager.stateIdle);
+            EnterState(manager, npc);
         }
     }
 }

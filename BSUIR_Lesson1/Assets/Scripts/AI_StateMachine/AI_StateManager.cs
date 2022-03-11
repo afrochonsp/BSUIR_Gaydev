@@ -7,14 +7,14 @@ public class AI_StateManager : MonoBehaviour
 {
     NPC npc;
     public AI_State currentState;
-    public AI_StateIdle stateIdle = new AI_StateIdle();
+    public AI_StateShoot stateShoot = new AI_StateShoot();
     public AI_StateMove stateMove = new AI_StateMove();
     public AI_StateRotate stateRotate = new AI_StateRotate();
 
     void Start()
     {
         npc = GetComponent<NPC>();
-        currentState = stateIdle;
+        currentState = stateMove;
         currentState.EnterState(this, npc);
     }
 

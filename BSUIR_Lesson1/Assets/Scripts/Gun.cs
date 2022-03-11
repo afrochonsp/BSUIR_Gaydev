@@ -8,7 +8,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] float damage = 10;
     [SerializeField] float recharge = 0.1f;
     [SerializeField] AudioClip sound;
-    [SerializeField] GameObject bloodParticle;
+    [SerializeField] ParticleSystem bloodParticle;
     AudioSource audioSource;
     float lastShotTime;
 
@@ -42,6 +42,8 @@ public abstract class Gun : MonoBehaviour
                 if (bloodParticle)
                 {
                     bloodParticle = Instantiate(bloodParticle, hit.point, Quaternion.identity);
+                    bloodParticle.Emit(1000);
+                    Destroy(bloodParticle.gameObject, 5);
                 }
             }
         }

@@ -17,7 +17,7 @@ public class AI_StateRotate : AI_State
         npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, targetRotation, turningRate * Time.deltaTime);
         if(Mathf.Abs(npc.transform.localEulerAngles.y - targetRotation.eulerAngles.y) < 1)
         {
-            manager.ChangeState(manager.stateMove);
+            manager.ChangeState(manager.stateShoot);
         }
     }
 }
